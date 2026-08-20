@@ -1,0 +1,1 @@
+import{t as e}from"./index-BfLMFZQ5.js";var t=e();function n(){return console.log(`---Hotel page render---`),(0,t.jsx)(`main`,{className:`hotel-page`,children:(0,t.jsx)(`h1`,{children:`Hotel page`})})}export{n as default};
