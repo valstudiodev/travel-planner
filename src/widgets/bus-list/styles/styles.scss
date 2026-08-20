@@ -1,0 +1,9 @@
+@use "sass:math";
+@use '../../../shared/styles/settings/settings' as *;
+@use '../../../shared/styles/mixins/mixins' as *;
+
+.bus-list {
+  @include grid-adaptive($size: toRem(300));
+
+  &__item {}
+}

@@ -1,0 +1,24 @@
+interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+  maxWidth?: number | string,
+  // className?: string,
+  // children: React.ReactNode,
+}
+
+function Container({
+  maxWidth = 1280,
+  className = '',
+  children,
+  ...props
+}: ContainerProps): React.JSX.Element {
+  return (
+    <div
+      {...props}
+      className={`container mx-auto px-3.75 ${className}`}
+      style={{ ...props.style, maxWidth }}
+    >
+      {children}
+    </div>
+  );
+}
+
+export default Container;

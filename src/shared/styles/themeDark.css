@@ -1,0 +1,20 @@
+@theme {
+  /* color-scheme: dark; */
+  --color-bg: #0f1115;
+  --color-surface: #171a21;
+  --color-surface-hover: #1e232d;
+
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+
+  --color-border: #2a303c;
+
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #7c3aed;
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  --color-overlay: rgb(0 0 0 / 60%);
+}

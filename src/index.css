@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "./shared/styles/global.css";
+@import "./shared/styles/themeDark.css";
+@import "./shared/styles/themeLight.css";
