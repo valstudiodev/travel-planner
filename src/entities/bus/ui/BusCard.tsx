@@ -1,5 +1,5 @@
 import { Bus } from "@/entities/bus/types/busTypes";
-
+import ArticleCard from "@/shared/primitives/article-card/ArticleCard";
 interface BusCardProps {
   bus: Bus,
   action?: React.ReactNode;
@@ -10,13 +10,11 @@ function BusCard({
   action
 }: BusCardProps): React.JSX.Element {
   return (
-    <article
-      className="bus-card bg-bg
-      text-text max-w-75 rounded
-      p-4 border-primary border-2">
-      <div className="bus-card__inner">
+    <ArticleCard>
+      <div className="bus-card__inner
+      flex flex-col gap-2">
         <h3 className="bus-card__title
-        text-2xl text-center mb-3 
+        text-3xl text-center mb-3 
         text-text-muted font-semibold" >
           {bus.company}
         </h3>
@@ -39,7 +37,7 @@ function BusCard({
       </div>
 
       {action}
-    </article>
+    </ArticleCard>
   );
 }
 

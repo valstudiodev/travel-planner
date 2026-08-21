@@ -1,11 +1,4 @@
-interface Hotel {
-  id: string;
-  name: string;
-  city: string;
-  rating: number;
-  pricePerNight: number;
-  image: string
-}
+import { Hotel } from "@/entities/hotel/types/hotelCardTypes";
 
 export const hotels: Hotel[] = [
   {

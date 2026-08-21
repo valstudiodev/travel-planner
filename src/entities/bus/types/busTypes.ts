@@ -1,3 +1,4 @@
+
 export interface Bus {
   id: string;
   company: string;
@@ -8,4 +9,3 @@ export interface Bus {
   duration: string;
   price: number;
 }
-

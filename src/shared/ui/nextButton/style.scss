@@ -1,0 +1,12 @@
+.button-next {
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #6e27e9;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}

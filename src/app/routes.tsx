@@ -1,7 +1,8 @@
 import MainLayout from "@/widgets/mainLayout/MainLayout"
 import { Suspense } from "react"
 import { createBrowserRouter } from "react-router"
-import { LazyBusesPage, LazyHotelPage, LazySummaryPage } from "./lazy-pages"
+import { LazyBusesPage, LazyHotelPage, LazyPage404, LazySummaryPage } from "./lazy-pages"
+import Loading from "@/shared/ui/loading/Loading"
 
 export const routes = [
   {
@@ -12,7 +13,7 @@ export const routes = [
         index: true,
         id: 'buses-page',
         element: (
-          <Suspense>
+          <Suspense fallback={<Loading />}>
             <LazyBusesPage />
           </Suspense>
         ),
@@ -27,7 +28,7 @@ export const routes = [
         path: 'hotel-page',
         id: 'hotel-page',
         element: (
-          <Suspense>
+          <Suspense fallback={<Loading />}>
             <LazyHotelPage />
           </Suspense>
         ),
@@ -42,7 +43,7 @@ export const routes = [
         path: 'summary-page',
         id: 'summary-page',
         element: (
-          <Suspense>
+          <Suspense fallback={<Loading />}>
             <LazySummaryPage />
           </Suspense>
         ),
@@ -53,6 +54,15 @@ export const routes = [
           breadcrumbs: true,
         }
       },
+      {
+        path: '*',
+        id: 'page-404',
+        element: (
+          <Suspense>
+            <LazyPage404 />
+          </Suspense>
+        ),
+      }
     ]
   }
 ]

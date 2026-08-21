@@ -6,7 +6,7 @@ function MainLayout() {
   console.log('Main layout render');
 
   return (
-    <div className="wrapper">
+    <div className="wrapper relative">
       <Header />
       <Outlet />
       <Footer />

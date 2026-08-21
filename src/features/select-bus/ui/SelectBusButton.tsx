@@ -18,10 +18,10 @@ function SelectBusButton({
   return (
     <button
       type="button"
-      className="select-bus-button
-      bg-primary rounded-xl px-4 py-1
+      className={`select-bus-button
+       rounded-xl px-4 py-1
       cursor-pointer hover:bg-primary-hover
-      transition-all duration-300"
+      transition-all duration-300 text-surface ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
       aria-pressed={isSelected}
       onClick={handleClick}
     >
@@ -31,3 +31,4 @@ function SelectBusButton({
 }
 
 export default SelectBusButton;
+
