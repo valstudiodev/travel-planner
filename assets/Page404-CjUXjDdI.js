@@ -1,0 +1,1 @@
+import{t as e}from"./index-BWEeN95A.js";var t=e();function n(){return(0,t.jsx)(`main`,{className:`page-404`,children:(0,t.jsx)(`div`,{className:`page-404__inner`,children:(0,t.jsx)(`h1`,{className:`text-6xl flex justify-center items-center text-center`,children:`Page 404`})})})}export{n as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./index-BWEeN95A.js";var t=e();function n(){return console.log(`---Summary page render---`),(0,t.jsx)(`main`,{className:`summary-page`,children:(0,t.jsx)(`h1`,{children:`Summary page`})})}export{n as default};
