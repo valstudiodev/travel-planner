@@ -37,7 +37,7 @@ function BusesPage(): React.JSX.Element {
               selectedBusId={selectedBusIds}
               onSelect={onSelectBus}
               className="grid grid-cols-2 gap-5
-              mb-10"
+              mb-10 max-[675px]:grid-cols-1"
             />
             <NextButton
               to="/hotel-page"

@@ -34,15 +34,6 @@ function BusList({
                   isSelected={isSelected}
                   onSelect={onSelect}
                 />
-                // <SelectButton
-                //   id={bus.id}
-                //   isSelected={isSelected}
-                //   onSelect={onSelect}
-                //   className={`
-                //     px-6 py-2 rounded cursor-pointer hover:bg-primary-hover
-                //     transition-all duration-300 text-surface
-                //     ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
-                // />
               }
             />
           </li>

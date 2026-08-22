@@ -12,7 +12,7 @@ function BusCard({
   variant = 'default'
 }: BusCardProps): React.JSX.Element {
   return (
-    <article className={`bus-card bus-card--${variant}`}>
+    <article className={`bus-card  h-full bus-card--${variant}`}>
       <div className='bus-card__inner 
       flex flex-col gap-2'>
         <h3 className="bus-card__title
@@ -21,12 +21,12 @@ function BusCard({
           {bus.company}
         </h3>
         <div className="bus-card__way
-        flex items-center gap-10">
+        flex items-center gap-5 flex-wrap">
           <span>{bus.departure}</span> -
           <span>{bus.arrival}</span>
         </div>
         <div className="bus-card__time
-        flex items-center gap-10">
+        flex items-center gap-5 flex-wrap">
           <span>{bus.departureTime}</span> -
           <span>{bus.arrivalTime}</span>
         </div>
