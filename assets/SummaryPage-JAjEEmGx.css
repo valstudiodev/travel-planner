@@ -1,0 +1,1 @@
+.modal{z-index:1000;background:#0f172a80;justify-content:center;align-items:center;padding:20px;display:flex;position:fixed;inset:0}.modal__overflow{background-color:#171a21;border-radius:10px;width:min(100%,500px);padding:30px;position:relative;box-shadow:0 20px 50px #0003}
