@@ -1,29 +1,22 @@
 import BusList from "@/widgets/bus-list/ui/BusList";
-import { useState } from "react";
 import { buses } from "@/shared/data/buses";
 import Container from "@/shared/primitives/container/Container";
 import { HeadingTitle } from "@/shared/typography";
 import NextButton from "@/shared/ui/nextButton/NextButton";
 import HeaderPage from "@/widgets/header-page/ui/HeaderPage";
 import Subtitle from "@/shared/typography/subtitle/Subtitle";
+import { useOutletContext } from "react-router";
+import { TripContextProps } from "@/widgets/mainLayout/tripContextTypes";
 
 function BusesPage(): React.JSX.Element {
   console.log('---Buses page render---');
 
-  const [selectedBusId, setSelectedBusId] = useState<string[]>([]);
+  const { selectedBusIds, onSelectBus } = useOutletContext<TripContextProps>()
 
-  const handleSelectBus = (busId: string): void => {
-    setSelectedBusId((prev) =>
-      prev.includes(busId)
-        ? prev.filter((id) => id !== busId)
-        : [...prev, busId]
-    )
-  }
-
-  const hasSelectedBuses = selectedBusId.length > 0
+  const hasSelectedBuses = selectedBusIds.length > 0
 
   return (
-    <main className="buses-page bg-text
+    <section className="buses-page
     py-10">
       <Container>
         <div className="buses-page__inner
@@ -41,8 +34,8 @@ function BusesPage(): React.JSX.Element {
             </Subtitle>
             <BusList
               buses={buses}
-              selectedBusId={selectedBusId}
-              onSelect={handleSelectBus}
+              selectedBusId={selectedBusIds}
+              onSelect={onSelectBus}
               className="grid grid-cols-2 gap-5
               mb-10"
             />
@@ -58,7 +51,7 @@ function BusesPage(): React.JSX.Element {
         </div>
       </Container>
 
-    </main>
+    </section>
   );
 }
 

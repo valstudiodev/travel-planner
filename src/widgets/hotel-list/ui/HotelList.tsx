@@ -1,7 +1,7 @@
 import { Hotel } from "@/entities/hotel/types/hotelCardTypes";
 import HotelCard from "@/entities/hotel/ui/HotelCard";
-// import SelectHotelButton from "@/features/select-hotel/ui/SelectHotelButton";
-import SelectButton from "@/shared/ui/selectButton/SelectButton";
+import SelectHotelButton from "@/features/select-hotel/ui/SelectHotelButton";
+// import SelectButton from "@/shared/ui/selectButton/SelectButton";
 
 
 interface HotelListProps {
@@ -28,14 +28,10 @@ function HotelList({
             <HotelCard
               hotel={hotel}
               action={
-                <SelectButton
-                  id={hotel.id}
+                <SelectHotelButton
+                  hotelId={hotel.id}
                   isSelected={isSelected}
                   onSelect={onSelect}
-                  className={`
-                    px-6 py-2 rounded cursor-pointer hover:bg-primary-hover
-                    transition-all duration-300 text-surface
-                    ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
                 />
               }
             />

@@ -1,7 +1,7 @@
 import BusCard from "@/entities/bus/ui/BusCard";
-// import SelectBusButton from "@/features/select-bus/ui/SelectBusButton";
+import SelectBusButton from "@/features/select-bus/ui/SelectBusButton";
 import { Bus } from "@/entities/bus/types/busTypes";
-import SelectButton from "@/shared/ui/selectButton/SelectButton";
+// import SelectButton from "@/shared/ui/selectButton/SelectButton";
 
 export interface BusListProps {
   buses: Bus[];
@@ -29,20 +29,20 @@ function BusList({
             <BusCard
               bus={bus}
               action={
-                // <SelectBusButton
-                //   busId={bus.id}
-                //   isSelected={isSelected}
-                //   onSelect={onSelect}
-                // />
-                <SelectButton
-                  id={bus.id}
+                <SelectBusButton
+                  busId={bus.id}
                   isSelected={isSelected}
                   onSelect={onSelect}
-                  className={`
-                    px-6 py-2 rounded cursor-pointer hover:bg-primary-hover
-                    transition-all duration-300 text-surface
-                    ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
                 />
+                // <SelectButton
+                //   id={bus.id}
+                //   isSelected={isSelected}
+                //   onSelect={onSelect}
+                //   className={`
+                //     px-6 py-2 rounded cursor-pointer hover:bg-primary-hover
+                //     transition-all duration-300 text-surface
+                //     ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
+                // />
               }
             />
           </li>

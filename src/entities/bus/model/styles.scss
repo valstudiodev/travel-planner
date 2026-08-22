@@ -1,0 +1,15 @@
+.bus-card {
+  background-color: white;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+
+  &--default {}
+
+  &--remove {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

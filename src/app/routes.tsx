@@ -3,11 +3,13 @@ import { Suspense } from "react"
 import { createBrowserRouter } from "react-router"
 import { LazyBusesPage, LazyHotelPage, LazyPage404, LazySummaryPage } from "./lazy-pages"
 import Loading from "@/shared/ui/loading/Loading"
+import ErrorPage from "@/pages/ErrorPage/ErrorPage"
 
 export const routes = [
   {
     path: '/',
     Component: MainLayout,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

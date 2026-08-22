@@ -1,18 +1,20 @@
 import { Bus } from "@/entities/bus/types/busTypes";
-import ArticleCard from "@/shared/primitives/article-card/ArticleCard";
+import '../model/styles.scss'
 interface BusCardProps {
   bus: Bus,
   action?: React.ReactNode;
+  variant?: 'default' | 'remove'
 }
 
 function BusCard({
   bus,
-  action
+  action,
+  variant = 'default'
 }: BusCardProps): React.JSX.Element {
   return (
-    <ArticleCard>
-      <div className="bus-card__inner
-      flex flex-col gap-2">
+    <article className={`bus-card bus-card--${variant}`}>
+      <div className='bus-card__inner 
+      flex flex-col gap-2'>
         <h3 className="bus-card__title
         text-3xl text-center mb-3 
         text-text-muted font-semibold" >
@@ -37,7 +39,7 @@ function BusCard({
       </div>
 
       {action}
-    </ArticleCard>
+    </article>
   );
 }
 

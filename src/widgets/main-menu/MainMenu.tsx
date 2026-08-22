@@ -22,7 +22,7 @@ function MainMenu(): React.JSX.Element {
                 to={`${path}`}
                 className={({ isActive }) => isActive ? 'is-active' : ''}
               >
-                {route?.meta.title}
+                {route?.meta?.title}
               </NavLink>
             </li>
           )

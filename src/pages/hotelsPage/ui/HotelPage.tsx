@@ -2,28 +2,22 @@ import { hotels } from "@/shared/data/hotels";
 import Container from "@/shared/primitives/container/Container";
 import { HeadingTitle } from "@/shared/typography";
 import Subtitle from "@/shared/typography/subtitle/Subtitle";
+import ButtonNavigate from "@/shared/ui/buttonNavigate/ButtonNavigate";
 import NextButton from "@/shared/ui/nextButton/NextButton";
 import HeaderPage from "@/widgets/header-page/ui/HeaderPage";
 import HotelList from "@/widgets/hotel-list/ui/HotelList";
-import { useState } from "react";
+import { TripContextProps } from "@/widgets/mainLayout/tripContextTypes";
+import { useOutletContext } from "react-router";
 
 function HotelPage(): React.JSX.Element {
   console.log('---Hotel page render---');
 
-  const [selectHotelId, setSelectHotelId] = useState<string[]>([]);
+  const { selectedHotelIds, onSelectHotel } = useOutletContext<TripContextProps>()
 
-  const handleSelectHotel = (hotelId: string): void => {
-    setSelectHotelId((prev) =>
-      prev.includes(hotelId)
-        ? prev.filter((id) => id !== hotelId)
-        : [...prev, hotelId]
-    )
-  }
-
-  const hasSelectedHotels = selectHotelId.length > 0
+  const hasSelectedHotels = selectedHotelIds.length > 0
 
   return (
-    <main className="hotel-page bg-text
+    <section className="hotel-page
     py-10">
       <Container
         className="hotel-page__container"
@@ -43,23 +37,34 @@ function HotelPage(): React.JSX.Element {
             </Subtitle>
             <HotelList
               hotels={hotels}
-              selectedHotelId={selectHotelId}
-              onSelect={handleSelectHotel}
+              selectedHotelId={selectedHotelIds}
+              onSelect={onSelectHotel}
               className="grid grid-cols-2 gap-5
               mb-10"
             />
-            <NextButton
-              to="/summary-page"
-              className="bg-primary px-6 py-2
+            <div className="hotel-page__actions
+            flex items-center gap-5 justify-between">
+              <ButtonNavigate
+                direction={-1}
+                className="bg-success px-6 py-2 rounded text-surface
+                hover:bg-green-700 transition-all duration-300 cursor-pointer"
+              >
+                Back
+              </ButtonNavigate>
+              <NextButton
+                to="/summary-page"
+                className="bg-primary px-6 py-2
               rounded text-white"
-              disabled={!hasSelectedHotels}
-            >
-              Continue to summary
-            </NextButton>
+                disabled={!hasSelectedHotels}
+              >
+                Continue to summary
+              </NextButton>
+            </div>
+
           </div>
         </div>
       </Container>
-    </main>
+    </section>
   );
 }
 
