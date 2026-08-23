@@ -1,4 +1,4 @@
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppSelector } from "@/app/store/hooks";
 import { Hotel } from "@/entities/hotel/types/hotelCardTypes";
 import HotelCard from "@/entities/hotel/ui/HotelCard";
 import SelectHotelButton from "@/features/select-hotel/ui/SelectHotelButton";
@@ -14,12 +14,14 @@ function HotelList({
 }: HotelListProps) {
   console.log('---Hotel list render---');
 
-  const { state } = useTrip()
+  const selectedHotelIds = useAppSelector(
+    (state) => state.trip.selectedHotelIds
+  )
 
   return (
     <ul className={`hotel-list ${className}`}>
       {hotels.map((hotel) => {
-        const isSelected = state.selectedHotelIds.includes(hotel.id)
+        const isSelected = selectedHotelIds.includes(hotel.id)
         return (
           <li
             key={hotel.id}

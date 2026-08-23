@@ -1,4 +1,6 @@
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppDispatch } from "@/app/store/hooks";
+import { toggle_bus } from "@/app/store/tripSlice";
+import '../model/style.scss';
 interface SelectBusButtonProps {
   busId: string;
   isSelected: boolean;
@@ -9,24 +11,17 @@ function SelectBusButton({
   isSelected = false,
 }: SelectBusButtonProps): React.JSX.Element {
 
-  const { dispatch } = useTrip()
-
-  const handleSelectBus = (): void => {
-    dispatch({
-      type: 'TOGGLE_BUS',
-      payload: busId
-    })
-  }
+  const dispatch = useAppDispatch()
 
   return (
     <button
       type="button"
       className={`select-bus-button
-       rounded-xl px-4 py-1
-      cursor-pointer hover:bg-primary-hover
-      transition-all duration-300 text-surface ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
+       rounded-xl px-4 py-1 cursor-pointer
+      transition-all duration-300 text-surface 
+      ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
       aria-pressed={isSelected}
-      onClick={handleSelectBus}
+      onClick={() => dispatch(toggle_bus(busId))}
     >
       {isSelected ? 'Selected' : ' Select'}
     </button>

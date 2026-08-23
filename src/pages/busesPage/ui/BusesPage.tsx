@@ -5,14 +5,16 @@ import { HeadingTitle } from "@/shared/typography";
 import NextButton from "@/shared/ui/nextButton/NextButton";
 import HeaderPage from "@/widgets/header-page/ui/HeaderPage";
 import Subtitle from "@/shared/typography/subtitle/Subtitle";
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppSelector } from "@/app/store/hooks";
 
 function BusesPage(): React.JSX.Element {
   console.log('---Buses page render---');
 
-  const { state } = useTrip()
+  const selectedBusIds = useAppSelector(
+    (state) => state.trip.selectedBusIds
+  )
 
-  const hasSelectedBuses = state.selectedBusIds.length > 0
+  const hasSelectedBuses = selectedBusIds.length > 0
 
   return (
     <section className="buses-page
@@ -38,8 +40,8 @@ function BusesPage(): React.JSX.Element {
             />
             <NextButton
               to="/hotel-page"
-              className="bg-primary px-6 py-2
-          rounded text-white"
+              className="px-6 py-2
+                rounded"
               disabled={!hasSelectedBuses}
             >
               Continue to Hotels

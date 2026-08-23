@@ -9,15 +9,25 @@ import SelectedBusList from "@/widgets/selectedBusList/ui/SelectedBusLIst";
 import SelectedHotelList from "@/widgets/selectedHotelList/ui/SelectedHotelList";
 import { useState } from "react";
 import SuccessModal from "@/features/submit-trip/ui/successModal/SuccessModal";
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
+import { clear_trip } from "@/app/store/tripSlice";
+import { useNavigate } from "react-router";
 
 
 function SummaryPage(): React.JSX.Element {
   console.log('---Summary page render---');
 
-  const { state, dispatch } = useTrip()
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
-  const { selectedBusIds, selectedHotelIds } = state
+  const selectedBusIds = useAppSelector(
+    (state) => state.trip.selectedBusIds
+  )
+
+  const selectedHotelIds = useAppSelector(
+    (state) => state.trip.selectedHotelIds
+  )
+
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const { submitTrip, isSubmitted } = useSubmitTrip()
@@ -25,15 +35,12 @@ function SummaryPage(): React.JSX.Element {
   const handleSubmit = async (): Promise<void> => {
     await submitTrip()
     setIsSuccessModalOpen(true)
-
   }
 
   const handleCloseSuccess = (): void => {
-    dispatch({
-      type: 'CLEAR_TRIP',
-    })
-
+    dispatch(clear_trip())
     setIsSuccessModalOpen(false)
+    navigate('/')
   }
 
   const hasSelection = selectedBusIds.length > 0 || selectedHotelIds.length > 0
@@ -42,10 +49,10 @@ function SummaryPage(): React.JSX.Element {
     <section className="summary-page py-10 relative">
       <Container>
         <div className="summary-page__inner bg-text-muted">
-          <HeaderPage />
-
           {hasSelection && (
             <div className="summary-page__body p-5">
+              <HeaderPage />
+
               <HeadingTitle
                 className="text-text
               text-5xl text-center mb-10"
@@ -81,9 +88,9 @@ function SummaryPage(): React.JSX.Element {
 
                 <SubmitTripButton
                   onClick={handleSubmit}
-                  className="bg-text text-bg
+                  className="
                   px-4 py-2 rounded cursor-pointer 
-                  hover:bg-gray-700 transition-all
+                 transition-all
                   duration-300"
                 >
                   Submit request
@@ -92,8 +99,8 @@ function SummaryPage(): React.JSX.Element {
 
               <ButtonNavigate
                 direction={-1}
-                className="bg-success px-6 py-2 rounded text-surface
-                hover:bg-green-700 transition-all duration-300 cursor-pointer"
+                className="px-6 py-2 rounded text-surface
+                transition-all duration-300 cursor-pointer"
               >
                 Back
               </ButtonNavigate>
@@ -106,8 +113,6 @@ function SummaryPage(): React.JSX.Element {
               )}
             </div>
           )}
-
-
         </div>
       </Container>
     </section>

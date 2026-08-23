@@ -14,7 +14,7 @@ function HotelCard({
 }: HotelCardProps): React.JSX.Element {
   return (
     <article className={`hotel-card hotel-card--${variant} flex
-      flex-col gap-2 h-full bg-bg p-5 rounded`}>
+      flex-col gap-2 h-full p-5 rounded`}>
       <div className="hotel-card__inner flex
         flex-col gap-2 items-start">
         <div className="hotel-card__content flex

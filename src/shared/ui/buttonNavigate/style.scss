@@ -1,0 +1,7 @@
+.button-navigate {
+  background-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+}

@@ -17,7 +17,7 @@ function BusCard({
       flex flex-col gap-2'>
         <h3 className="bus-card__title
         text-3xl text-center mb-3 
-        text-text-muted font-semibold" >
+        font-semibold" >
           {bus.company}
         </h3>
         <div className="bus-card__way

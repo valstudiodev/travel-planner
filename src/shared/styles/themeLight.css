@@ -1,4 +1,4 @@
-@theme {
+[data-theme='light'] {
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
   --color-surface-hover: #f1f5f9;
@@ -17,5 +17,3 @@
 
   --color-overlay: rgb(15 23 42 / 40%);
 }
-
-/* [data-theme='light'] */

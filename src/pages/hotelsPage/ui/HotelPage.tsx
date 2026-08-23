@@ -1,4 +1,4 @@
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppSelector } from "@/app/store/hooks";
 import { hotels } from "@/shared/data/hotels";
 import Container from "@/shared/primitives/container/Container";
 import { HeadingTitle } from "@/shared/typography";
@@ -11,9 +11,11 @@ import HotelList from "@/widgets/hotel-list/ui/HotelList";
 function HotelPage(): React.JSX.Element {
   console.log('---Hotel page render---');
 
-  const { state } = useTrip()
+  const selectedHotelIds = useAppSelector(
+    (state) => state.trip.selectedHotelIds
+  )
 
-  const hasSelectedHotels = state.selectedHotelIds.length > 0
+  const hasSelectedHotels = selectedHotelIds.length > 0
 
   return (
     <section className="hotel-page
@@ -36,15 +38,15 @@ function HotelPage(): React.JSX.Element {
             </Subtitle>
             <HotelList
               hotels={hotels}
-              className="grid grid-cols-2 gap-5
+              className="grid grid-cols-2 max-[750px]:grid-cols-1 gap-5
               mb-10"
             />
             <div className="hotel-page__actions
             flex items-center gap-5 justify-between">
               <ButtonNavigate
                 direction={-1}
-                className="bg-success px-6 py-2 rounded text-surface
-                hover:bg-green-700 transition-all duration-300 cursor-pointer"
+                className="px-6 py-2 rounded text-surface
+                 transition-all duration-300 cursor-pointer"
               >
                 Back
               </ButtonNavigate>

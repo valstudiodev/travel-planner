@@ -1,4 +1,4 @@
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppSelector } from "@/app/store/hooks";
 import BusCard from "@/entities/bus/ui/BusCard";
 import RemoveSelectionButton from "@/features/remove-selection/ui/RemoveSelectionButton";
 import { buses } from "@/shared/data/buses";
@@ -6,10 +6,12 @@ import { buses } from "@/shared/data/buses";
 
 function SelectedBusList(): React.JSX.Element {
 
-  const { state } = useTrip()
+  const selectedBusIds = useAppSelector(
+    (state) => state.trip.selectedBusIds
+  )
 
   const selectedBuses = buses.filter(
-    (bus) => state.selectedBusIds.includes(bus.id)
+    (bus) => selectedBusIds.includes(bus.id)
   )
 
   return (

@@ -1,23 +1,29 @@
 import { Outlet } from "react-router";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
-import TripProvider from "@/app/providers/tripProvider/TripProvider";
+import { Provider } from "react-redux";
+import { store } from "@/app/store/store";
+import ThemeProvider from "@/app/providers/themeProvider/ThemeProvider";
+import './mainLayoutStyle.scss'
 
 function MainLayout() {
   console.log('Main layout render');
 
   return (
-    <div className="wrapper relative ">
-      <Header />
+    <ThemeProvider>
+      <div className="wrapper">
+        <Header />
 
-      <main className="page bg-text ">
-        <TripProvider>
-          <Outlet />
-        </TripProvider>
-      </main>
+        <main className="page">
+          <Provider store={store}>
+            <Outlet />
+          </Provider>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </ThemeProvider>
+
   );
 }
 

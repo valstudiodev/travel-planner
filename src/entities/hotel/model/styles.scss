@@ -1,5 +1,7 @@
 .hotel-card {
   flex-wrap: wrap;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 
   &__body {
     display: flex;

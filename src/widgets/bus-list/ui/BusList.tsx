@@ -1,8 +1,7 @@
 import BusCard from "@/entities/bus/ui/BusCard";
 import SelectBusButton from "@/features/select-bus/ui/SelectBusButton";
 import { Bus } from "@/entities/bus/types/busTypes";
-import useTrip from "@/app/providers/tripProvider/useTrip";
-// import SelectButton from "@/shared/ui/selectButton/SelectButton";
+import { useAppSelector } from "@/app/store/hooks";
 
 export interface BusListProps {
   buses: Bus[];
@@ -14,12 +13,14 @@ function BusList({
   className,
 }: BusListProps): React.JSX.Element {
 
-  const { state } = useTrip()
+  const selectedBusIds = useAppSelector(
+    (state) => state.trip.selectedBusIds
+  )
 
   return (
     <ul className={`bus-list ${className}`}>
       {buses.map((bus) => {
-        const isSelected = state.selectedBusIds.includes(bus.id)
+        const isSelected = selectedBusIds.includes(bus.id)
 
         return (
           <li

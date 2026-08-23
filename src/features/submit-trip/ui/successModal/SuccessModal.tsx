@@ -27,9 +27,9 @@ function SuccessModal({
         <button
           type="button"
           onClick={onClose}
-          className="bg-bg text-text
+          className=" btn-close
           px-2 py-1 rounded-2xl absolute top-2.5 right-2.5
-          hover:bg-amber-50 transition-all duration-300
+         transition-all duration-300
           cursor-pointer"
         >
           Close

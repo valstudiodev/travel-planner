@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import './style.scss'
 
 interface ButtonNavigateProps {
   direction: 1 | -1;

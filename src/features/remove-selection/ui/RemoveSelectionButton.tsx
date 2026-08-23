@@ -1,4 +1,5 @@
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppDispatch } from "@/app/store/hooks";
+import { remove_bus, remove_hotel } from "@/app/store/tripSlice";
 
 interface RemoveSelectionButtonProps {
   cardId: string;
@@ -15,13 +16,14 @@ function RemoveSelectionButton({
   ...props
 }: RemoveSelectionButtonProps): React.JSX.Element {
 
-  const { dispatch } = useTrip()
+  const dispatch = useAppDispatch()
 
   const handleRemoveBus = (): void => {
-    dispatch({
-      type: type === 'bus' ? 'REMOVE_BUS' : 'REMOVE_HOTEL',
-      payload: cardId
-    })
+    if (type === 'bus') {
+      dispatch(remove_bus(cardId))
+    } else {
+      dispatch(remove_hotel(cardId))
+    }
   }
 
   return (

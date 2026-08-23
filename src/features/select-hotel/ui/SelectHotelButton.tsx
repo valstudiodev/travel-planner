@@ -1,4 +1,6 @@
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppDispatch } from "@/app/store/hooks";
+import { toggle_hotel } from "@/app/store/tripSlice";
+import '../model/style.scss';
 
 interface SelectHotelButtonProps {
   hotelId: string;
@@ -10,24 +12,17 @@ function SelectHotelButton({
   isSelected = false,
 }: SelectHotelButtonProps): React.JSX.Element {
 
-  const { dispatch } = useTrip()
-
-  const handleSelectHotel = (): void => {
-    dispatch({
-      type: 'TOGGLE_HOTEL',
-      payload: hotelId
-    })
-  }
+  const dispatch = useAppDispatch()
 
   return (
     <button
       type="button"
       className={`select-bus-button
-       rounded-xl px-4 py-1
-      cursor-pointer hover:bg-primary-hover
-      transition-all duration-300 text-surface ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
+       rounded-xl px-4 py-1 cursor-pointer 
+      transition-all duration-300 text-surface 
+      ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
       aria-pressed={isSelected}
-      onClick={handleSelectHotel}
+      onClick={() => dispatch(toggle_hotel(hotelId))}
     >
       {isSelected ? 'Selected' : ' Select'}
     </button>

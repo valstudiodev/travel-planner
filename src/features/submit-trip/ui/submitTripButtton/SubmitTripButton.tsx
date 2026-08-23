@@ -1,4 +1,4 @@
-
+import '../../model/style.scss'
 interface SubmitTripButtonProps {
   children: React.ReactNode;
   onClick: () => void;

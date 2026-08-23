@@ -1,14 +1,16 @@
-import useTrip from "@/app/providers/tripProvider/useTrip";
+import { useAppSelector } from "@/app/store/hooks";
 import HotelCard from "@/entities/hotel/ui/HotelCard";
 import RemoveSelectionButton from "@/features/remove-selection/ui/RemoveSelectionButton";
 import { hotels } from "@/shared/data/hotels";
 
 function SelectedHotelList() {
 
-  const { state } = useTrip()
+  const selectedHotelIds = useAppSelector(
+    (state) => state.trip.selectedHotelIds
+  )
 
   const selectedHotels = hotels.filter(
-    (hotel) => state.selectedHotelIds.includes(hotel.id)
+    (hotel) => selectedHotelIds.includes(hotel.id)
   )
 
   return (
