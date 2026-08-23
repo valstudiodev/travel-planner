@@ -11,7 +11,7 @@ export default defineConfig(() => {
       react(),
       tailwindcss()
     ],
-    base: isGitHubPages ? '/travel-planner/' : '',
+    base: isGitHubPages ? '/travel-planner/' : '/',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
