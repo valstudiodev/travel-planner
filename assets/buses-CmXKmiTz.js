@@ -1,4 +1,4 @@
-import{t as e}from"./index-DMdTQmNQ.js";var t=e();function n({bus:e,action:n,variant:r=`default`}){return(0,t.jsxs)(`article`,{className:`bus-card  h-full bus-card--${r}`,children:[(0,t.jsxs)(`div`,{className:`bus-card__inner \r
+import{n as e}from"./index-BEgovTU8.js";var t=e();function n({bus:e,action:n,variant:r=`default`}){return(0,t.jsxs)(`article`,{className:`bus-card  h-full bus-card--${r}`,children:[(0,t.jsxs)(`div`,{className:`bus-card__inner \r
       flex flex-col gap-2`,children:[(0,t.jsx)(`h3`,{className:`bus-card__title\r
         text-3xl text-center mb-3 \r
         text-text-muted font-semibold`,children:e.company}),(0,t.jsxs)(`div`,{className:`bus-card__way\r

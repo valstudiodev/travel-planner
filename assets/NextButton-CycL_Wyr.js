@@ -1,1 +1,0 @@
-import{n as e,t}from"./index-DMdTQmNQ.js";var n=t();function r({to:t,children:r,className:i=``,...a}){let o=e(),s=()=>{o(t)};return(0,n.jsx)(`button`,{...a,className:`button-next ${i}`,onClick:s,children:r})}export{r as t};
