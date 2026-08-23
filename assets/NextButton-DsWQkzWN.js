@@ -1,1 +1,0 @@
-import{n as e,r as t}from"./index-BEgovTU8.js";var n=e();function r({to:e,children:r,className:i=``,...a}){let o=t(),s=()=>{o(e)};return(0,n.jsx)(`button`,{...a,className:`button-next ${i}`,onClick:s,children:r})}export{r as t};

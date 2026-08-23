@@ -1,0 +1,1 @@
+.button-next{cursor:pointer;color:var(--color-text);background-color:var(--color-secondary);transition:background-color .3s}.button-next:hover{background-color:var(--color-secondary-hover)}.button-next:disabled{opacity:.5}
