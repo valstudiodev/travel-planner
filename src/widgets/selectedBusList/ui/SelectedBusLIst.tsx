@@ -1,16 +1,15 @@
+import useTrip from "@/app/providers/tripProvider/useTrip";
 import BusCard from "@/entities/bus/ui/BusCard";
 import RemoveSelectionButton from "@/features/remove-selection/ui/RemoveSelectionButton";
 import { buses } from "@/shared/data/buses";
-import { TripContextProps } from "@/widgets/mainLayout/tripContextTypes";
-import { useOutletContext } from "react-router";
 
 
 function SelectedBusList(): React.JSX.Element {
 
-  const { selectedBusIds, onRemoveBus } = useOutletContext<TripContextProps>()
+  const { state } = useTrip()
 
-  const selectedBuses = buses.filter((bus) =>
-    selectedBusIds.includes(bus.id)
+  const selectedBuses = buses.filter(
+    (bus) => state.selectedBusIds.includes(bus.id)
   )
 
   return (
@@ -28,7 +27,7 @@ function SelectedBusList(): React.JSX.Element {
             action={
               <RemoveSelectionButton
                 cardId={bus.id}
-                onRemove={onRemoveBus}
+                type="bus"
               >
                 Remove
               </RemoveSelectionButton>

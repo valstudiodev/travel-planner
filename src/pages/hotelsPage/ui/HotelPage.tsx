@@ -1,3 +1,4 @@
+import useTrip from "@/app/providers/tripProvider/useTrip";
 import { hotels } from "@/shared/data/hotels";
 import Container from "@/shared/primitives/container/Container";
 import { HeadingTitle } from "@/shared/typography";
@@ -6,15 +7,13 @@ import ButtonNavigate from "@/shared/ui/buttonNavigate/ButtonNavigate";
 import NextButton from "@/shared/ui/nextButton/NextButton";
 import HeaderPage from "@/widgets/header-page/ui/HeaderPage";
 import HotelList from "@/widgets/hotel-list/ui/HotelList";
-import { TripContextProps } from "@/widgets/mainLayout/tripContextTypes";
-import { useOutletContext } from "react-router";
 
 function HotelPage(): React.JSX.Element {
   console.log('---Hotel page render---');
 
-  const { selectedHotelIds, onSelectHotel } = useOutletContext<TripContextProps>()
+  const { state } = useTrip()
 
-  const hasSelectedHotels = selectedHotelIds.length > 0
+  const hasSelectedHotels = state.selectedHotelIds.length > 0
 
   return (
     <section className="hotel-page
@@ -37,8 +36,6 @@ function HotelPage(): React.JSX.Element {
             </Subtitle>
             <HotelList
               hotels={hotels}
-              selectedHotelId={selectedHotelIds}
-              onSelect={onSelectHotel}
               className="grid grid-cols-2 gap-5
               mb-10"
             />

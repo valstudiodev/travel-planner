@@ -1,16 +1,14 @@
+import useTrip from "@/app/providers/tripProvider/useTrip";
 import HotelCard from "@/entities/hotel/ui/HotelCard";
 import RemoveSelectionButton from "@/features/remove-selection/ui/RemoveSelectionButton";
 import { hotels } from "@/shared/data/hotels";
-import { TripContextProps } from "@/widgets/mainLayout/tripContextTypes";
-import { useOutletContext } from "react-router";
-
 
 function SelectedHotelList() {
 
-  const { selectedHotelIds, onRemoveHotel } = useOutletContext<TripContextProps>()
+  const { state } = useTrip()
 
-  const selectedHotels = hotels.filter((hotel) =>
-    selectedHotelIds.includes(hotel.id)
+  const selectedHotels = hotels.filter(
+    (hotel) => state.selectedHotelIds.includes(hotel.id)
   )
 
   return (
@@ -22,10 +20,11 @@ function SelectedHotelList() {
         <li key={hotel.id}>
           <HotelCard
             hotel={hotel}
+            variant="remove"
             action={
               <RemoveSelectionButton
                 cardId={hotel.id}
-                onRemove={onRemoveHotel}
+                type="hotel"
               >
                 Remove
               </RemoveSelectionButton>

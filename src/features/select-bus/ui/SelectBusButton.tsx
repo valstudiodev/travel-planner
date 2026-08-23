@@ -1,20 +1,23 @@
-import { MouseEventHandler } from "react";
-
+import useTrip from "@/app/providers/tripProvider/useTrip";
 interface SelectBusButtonProps {
   busId: string;
   isSelected: boolean;
-  onSelect: (busId: string) => void
 }
 
 function SelectBusButton({
   busId,
   isSelected = false,
-  onSelect
 }: SelectBusButtonProps): React.JSX.Element {
 
-  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
-    onSelect(busId)
+  const { dispatch } = useTrip()
+
+  const handleSelectBus = (): void => {
+    dispatch({
+      type: 'TOGGLE_BUS',
+      payload: busId
+    })
   }
+
   return (
     <button
       type="button"
@@ -23,7 +26,7 @@ function SelectBusButton({
       cursor-pointer hover:bg-primary-hover
       transition-all duration-300 text-surface ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
       aria-pressed={isSelected}
-      onClick={handleClick}
+      onClick={handleSelectBus}
     >
       {isSelected ? 'Selected' : ' Select'}
     </button>

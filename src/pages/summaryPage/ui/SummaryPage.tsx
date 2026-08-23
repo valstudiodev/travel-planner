@@ -11,12 +11,15 @@ import SelectedHotelList from "@/widgets/selectedHotelList/ui/SelectedHotelList"
 import { useOutletContext } from "react-router";
 import { useState } from "react";
 import SuccessModal from "@/features/submit-trip/ui/successModal/SuccessModal";
+import useTrip from "@/app/providers/tripProvider/useTrip";
 
 
 function SummaryPage(): React.JSX.Element {
   console.log('---Summary page render---');
 
-  const { selectedBusIds, selectedHotelIds } = useOutletContext<TripContextProps>()
+  const { state, dispatch } = useTrip()
+
+  const { selectedBusIds, selectedHotelIds } = state
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const { submitTrip, isSubmitted } = useSubmitTrip()
@@ -24,6 +27,15 @@ function SummaryPage(): React.JSX.Element {
   const handleSubmit = async (): Promise<void> => {
     await submitTrip()
     setIsSuccessModalOpen(true)
+
+  }
+
+  const handleCloseSuccess = (): void => {
+    dispatch({
+      type: 'CLEAR_TRIP',
+    })
+
+    setIsSuccessModalOpen(false)
   }
 
   const hasSelection = selectedBusIds.length > 0 || selectedHotelIds.length > 0
@@ -91,7 +103,7 @@ function SummaryPage(): React.JSX.Element {
               {isSubmitted && (
                 <SuccessModal
                   isOpen={isSuccessModalOpen}
-                  onClose={() => setIsSuccessModalOpen(false)}
+                  onClose={handleCloseSuccess}
                 />
               )}
             </div>

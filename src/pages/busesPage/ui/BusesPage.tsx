@@ -5,15 +5,14 @@ import { HeadingTitle } from "@/shared/typography";
 import NextButton from "@/shared/ui/nextButton/NextButton";
 import HeaderPage from "@/widgets/header-page/ui/HeaderPage";
 import Subtitle from "@/shared/typography/subtitle/Subtitle";
-import { useOutletContext } from "react-router";
-import { TripContextProps } from "@/widgets/mainLayout/tripContextTypes";
+import useTrip from "@/app/providers/tripProvider/useTrip";
 
 function BusesPage(): React.JSX.Element {
   console.log('---Buses page render---');
 
-  const { selectedBusIds, onSelectBus } = useOutletContext<TripContextProps>()
+  const { state } = useTrip()
 
-  const hasSelectedBuses = selectedBusIds.length > 0
+  const hasSelectedBuses = state.selectedBusIds.length > 0
 
   return (
     <section className="buses-page
@@ -34,8 +33,6 @@ function BusesPage(): React.JSX.Element {
             </Subtitle>
             <BusList
               buses={buses}
-              selectedBusId={selectedBusIds}
-              onSelect={onSelectBus}
               className="grid grid-cols-2 gap-5
               mb-10 max-[675px]:grid-cols-1"
             />

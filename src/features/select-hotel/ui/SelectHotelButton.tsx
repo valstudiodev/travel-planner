@@ -1,20 +1,24 @@
-import { MouseEventHandler } from "react";
+import useTrip from "@/app/providers/tripProvider/useTrip";
 
 interface SelectHotelButtonProps {
   hotelId: string;
   isSelected: boolean;
-  onSelect: (hotelId: string) => void
 }
 
 function SelectHotelButton({
   hotelId,
   isSelected = false,
-  onSelect
 }: SelectHotelButtonProps): React.JSX.Element {
 
-  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
-    onSelect(hotelId)
+  const { dispatch } = useTrip()
+
+  const handleSelectHotel = (): void => {
+    dispatch({
+      type: 'TOGGLE_HOTEL',
+      payload: hotelId
+    })
   }
+
   return (
     <button
       type="button"
@@ -23,7 +27,7 @@ function SelectHotelButton({
       cursor-pointer hover:bg-primary-hover
       transition-all duration-300 text-surface ${isSelected ? 'bg-text-muted' : 'bg-primary'}`}
       aria-pressed={isSelected}
-      onClick={handleClick}
+      onClick={handleSelectHotel}
     >
       {isSelected ? 'Selected' : ' Select'}
     </button>
