@@ -1,4 +1,5 @@
 import ThemeToggle from "@/shared/ui/themeToggle/ThemeToggle";
+import { SunMoon } from "lucide-react";
 import '../model/headerPageStyle.scss'
 
 function HeaderPage() {
@@ -9,10 +10,12 @@ function HeaderPage() {
       <h2>TravelPlanner</h2>
       <ThemeToggle
         title="Switch theme"
-        className="text-surface cursor-pointer
-        bg-primary rounded-2xl px-3 py-1"
+        className="cursor-pointer
+        rounded-full p-2"
       >
-        Switch theme
+        <SunMoon
+          size={30}
+        />
       </ThemeToggle>
     </header>
   );

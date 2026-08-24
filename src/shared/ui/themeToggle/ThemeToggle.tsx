@@ -1,4 +1,5 @@
 import useTheme from "@/app/providers/themeProvider/hooks";
+import './style.scss'
 
 interface ThemeToggleProps {
   title: string;
