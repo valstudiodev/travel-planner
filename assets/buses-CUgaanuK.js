@@ -1,4 +1,4 @@
-import{l as e}from"./index-WBu2V70S.js";var t=e();function n({bus:e,action:n,variant:r=`default`}){return(0,t.jsxs)(`article`,{className:`bus-card  h-full bus-card--${r}`,children:[(0,t.jsxs)(`div`,{className:`bus-card__inner \r
+import{l as e}from"./index-Bttur5bY.js";var t=e();function n({bus:e,action:n,variant:r=`default`}){return(0,t.jsxs)(`article`,{className:`bus-card  h-full bus-card--${r}`,children:[(0,t.jsxs)(`div`,{className:`bus-card__inner \r
       flex flex-col gap-2`,children:[(0,t.jsx)(`h3`,{className:`bus-card__title\r
         text-3xl text-center mb-3 \r
         font-semibold`,children:e.company}),(0,t.jsxs)(`div`,{className:`bus-card__way\r

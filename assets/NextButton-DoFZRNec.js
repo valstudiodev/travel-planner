@@ -1,1 +1,0 @@
-import{l as e,u as t}from"./index-WBu2V70S.js";var n=e();function r({to:e,children:r,className:i=``,...a}){let o=t(),s=()=>{o(e)};return(0,n.jsx)(`button`,{...a,className:`button-next ${i}`,onClick:s,children:r})}export{r as t};

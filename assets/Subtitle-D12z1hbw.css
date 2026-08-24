@@ -1,0 +1,1 @@
+.theme-toggle{color:var(--color-surface);background-color:var(--color-primary);transition:all .3s}.theme-toggle:hover{background-color:var(--color-primary-hover)}.header-page{background-color:var(--color-border);color:var(--color-text);flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;display:flex}
